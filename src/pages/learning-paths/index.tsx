@@ -6,14 +6,9 @@
 import React, { useState, useMemo } from "react";
 import { motion } from "framer-motion";
 import Layout from "@theme/Layout";
-import Link from "@docusaurus/Link";
 import {
   FaSearch,
-  FaTrophy,
-  FaClock,
-  FaBook,
   FaArrowRight,
-  FaFilter,
 } from "react-icons/fa";
 import { learningPaths } from "../../data/learningPaths";
 import PathCard from "../../components/LearningPaths/PathCard";
@@ -23,7 +18,10 @@ interface FilterState {
   sortBy: "newest" | "duration" | "difficulty";
 }
 
+import { useHistory } from "@docusaurus/router";
+
 export const LearningPathsPage: React.FC = () => {
+  const history = useHistory();
   const [selectedPath, setSelectedPath] = useState<string | null>(null);
   const [filters, setFilters] = useState<FilterState>({
     difficulty: "All",
@@ -211,7 +209,7 @@ export const LearningPathsPage: React.FC = () => {
                     path={path}
                     index={index}
                     onExplore={(pathId) => {
-                      window.location.href = `/algo/learning-paths/path-details?id=${pathId}`;
+                      history.push(`/algo/learning-paths/path-details?id=${pathId}`);
                     }}
                   />
                 ))}

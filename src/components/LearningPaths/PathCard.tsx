@@ -51,7 +51,6 @@ export const PathCard: React.FC<PathCardProps> = ({
 
   return (
     <motion.div
-      variants={cardVariants}
       initial="hidden"
       whileInView="show"
       viewport={{ once: true, margin: "-50px" }}
